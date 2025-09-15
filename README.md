@@ -66,11 +66,3 @@ El diseño busca ser **atractivo, minimalista, profesional y motivacional**, usa
 - **Preguntas Frecuentes (FAQ)**  
 - **Tracking Avanzado de Progreso** → Registro de medidas y rutinas con gráficos motivacionales  
 
----
-
-## 📦 Instalación y uso
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/usuario/mi-repo-frontend.git
-   cd mi-repo-frontend
