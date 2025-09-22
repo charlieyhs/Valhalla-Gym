@@ -1,0 +1,35 @@
+:root {
+    --color-naranja: #ff4d30;
+    --color-negro: #020024;
+}
+
+.fondo-hero {
+    padding: 8px;
+}
+
+.contenedor-texto {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-illustration img {
+  animation: float 2s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0px 0px 5px var(--color-naranja));
+  }
+  50% {
+    filter: drop-shadow(0px 0px 12px var(--color-naranja));
+  }
+}

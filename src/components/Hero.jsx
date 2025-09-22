@@ -1,46 +1,45 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from '@mui/material';
+import '../css/hero.css'
+import { ORANGE_COLOR } from '../constants/colors';
 
 export default function Hero() {
-    return (
-        <Box
-            sx={{
-                height: "100vh",
-                width: "100%",
-                position: "relative",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-                color: "white",
-                overflow: "hidden",
-            }}
-        >
-            <Box
-                component="img"
-                src="/src/images/landing_page/Hero.png"
-                alt="Hero background"
-                sx={{
-                    position: "absolute",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    zIndex: -1,
-                }}
-            />
-            
-            <Box sx={{ zIndex: 1 }}>
-                <Typography variant="h3" fontWeight="bold">
-                    Transforma tu vida con Olimpo
-                </Typography>
-                <Typography variant="h6" sx={{ mt: 2, maxWidth: 600 }}>
-                    Alcanza tus metas de fitness con entrenamientos personalizados y un ambiente motivador.
-                </Typography>
-                <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
-                    Unirse ahora
-                </Button>
-            </Box>
-        </Box>
+  return (
+    <Box className="fondo-hero" size={{xs: 12, md: 8}}>
+        <Grid container spacing={4} alignItems="center" justifyContent="space-between">
+            <Grid size={{xs:12, md:6}} className='contenedor-texto'>
+                <Stack spacing={3}>
+                    <Typography variant="h3" fontWeight="bold">
+                        <span style={{ color: ORANGE_COLOR }}>Cuerpo fuerte, mente fuerte</span>
+                    </Typography>
 
-    );
-};
+                    <Typography variant="body1" sx={{ color: "#9ca3af" }}>
+                        Descubre un espacio donde la disciplina se convierte en resultados.
+                        <br />
+                        Tu transformación comienza ahora.
+                    </Typography>
+
+                    <Stack direction="row" spacing={2}>
+                        <Button
+                        variant="contained"
+                        sx={{ bgcolor: ORANGE_COLOR, borderRadius: 2, px: 3 }}
+                        >
+                        Unirse ahora
+                        </Button>
+                    </Stack>
+                </Stack>
+            </Grid>
+
+            {/* Imagen */}
+            <Grid size={{xs:12, md:6}} sx={{ textAlign: "center" }}>
+                <div className="hero-illustration">
+                    <img
+                        src="/src/assets/gym-3d.png"
+                        alt="3D Gym Illustration"
+                        style={{ width: "100%", maxWidth: '70%'}}
+                    />
+                </div>
+            </Grid>
+        </Grid>
+    </Box>
+  );
+}

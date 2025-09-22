@@ -1,11 +1,13 @@
 :root {
     --color-naranja: #ff4d30;
+    --color-negro: #020024;
 }
 
 .navbar-toolbar {
   display: flex;
   justify-content: space-between;
   padding: 0.8rem 2rem;
+  background: var(--color-negro);
 }
 
 .nav-item {    
@@ -41,8 +43,8 @@
 }
 
 .nav-item.active {
-    color: black ;
-    background: linear-gradient(to bottom, white, #ff9800, #e65100);
+    color: var(--color-negro);
+    background: linear-gradient(to bottom, white, var(--color-naranja), #e65100);
     background-size: 100% 300%;
     background-position: bottom;
     box-shadow: 0 4px 10px rgba(255, 152, 0, 0.5);

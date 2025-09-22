@@ -52,7 +52,7 @@ const Prices = () => {
       <Typography variant="h3" component="h2" gutterBottom align="center" sx={{ color: ORANGE_COLOR, mb: 4 }}>
         Planes y Precios
       </Typography>
-      <Typography variant="h6" align="center" sx={{ mb: 6, color: 'text.secondary' }}>
+      <Typography variant="h6" align="center" sx={{ mb: 6, color: '#fff' }}>
         Elige el plan que mejor se adapte a tus necesidades
       </Typography>
       

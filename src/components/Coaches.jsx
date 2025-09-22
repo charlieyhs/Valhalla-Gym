@@ -1,5 +1,15 @@
-import { Avatar, Box, Button, Card, Chip, Grid, Rating, Typography } from "@mui/material";
+import { 
+  Box, 
+  Button, 
+  Card, 
+  Chip, 
+  Rating, 
+  Typography } from "@mui/material";
 import { ORANGE_COLOR } from "../constants/colors";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import '../css/coaches.css'
+import { AvatarTooltip } from "./AvatarTooltip";
 
 const Coaches = () => {
     const entrenadores = [
@@ -10,7 +20,7 @@ const Coaches = () => {
       experiencia: '8 años',
       certificaciones: ['CrossFit L2', 'NSCA-CPT'],
       rating: 4.9,
-      imagen: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=face',
+      imagen: '/src/assets/coaches/entrenador1.png',
       descripcion: 'Especialista en entrenamientos funcionales de alta intensidad'
     },
     {
@@ -20,7 +30,7 @@ const Coaches = () => {
       experiencia: '6 años',
       certificaciones: ['RYT-500', 'Pilates Mat'],
       rating: 4.8,
-      imagen: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=150&h=150&fit=crop&crop=face',
+      imagen: '/src/assets/coaches/entrenador3.png',
       descripcion: 'Instructora certificada en yoga y pilates con enfoque holístico'
     },
     {
@@ -30,28 +40,49 @@ const Coaches = () => {
       experiencia: '10 años',
       certificaciones: ['NSCA-CSCS', 'USA Powerlifting'],
       rating: 4.9,
-      imagen: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=face',
+      imagen: '/src/assets/coaches/entrenador2.png',
+      descripcion: 'Entrenador personal especializado en fuerza y desarrollo muscular'
+    },
+    {
+      id: 3,
+      nombre: 'Luisa Castro',
+      especialidad: 'Functional training',
+      experiencia: '10 años',
+      certificaciones: ['NSCA-CSCS'],
+      rating: 4.9,
+      imagen: '/src/assets/coaches/entrenador4.png',
       descripcion: 'Entrenador personal especializado en fuerza y desarrollo muscular'
     }
   ];
 
   return (
-    <Box>
+    <div>
       <Typography variant="h3" component="h2" gutterBottom align="center" sx={{ color: ORANGE_COLOR, mb: 4 }}>
         Nuestros Entrenadores
       </Typography>
-      <Typography variant="h6" align="center" sx={{ mb: 6, color: 'text.secondary' }}>
+      <Typography variant="h6" align="center" sx={{ mb: 6, color: '#fff' }}>
         Conoce al equipo de profesionales que te ayudarán a alcanzar tus metas
       </Typography>
       
-      <Grid container spacing={4} justifyContent="center">
+      <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={3}
+          loop={true}
+          grabCursor={true}
+          breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+          }}
+            
+      >
         {entrenadores.map((entrenador) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4}} key={entrenador.id}>
-            <Card sx={{ height: '100%', textAlign: 'center', p: 2 }}>
-              <Avatar
-                src={entrenador.imagen}
-                sx={{ width: 120, height: 120, mx: 'auto', mb: 2 }}
-              />
+          <SwiperSlide key={entrenador.id} style={{ overflow: 'visible' }}>
+            <Card className='card' sx={{ height: '100%', textAlign: 'center', p: 2 }}>
+              <div>
+                <AvatarTooltip src={entrenador.imagen} alt={entrenador.nombre} />
+              </div>
+
               <Typography variant="h5" component="h3" gutterBottom color={ORANGE_COLOR}>
                 {entrenador.nombre}
               </Typography>
@@ -96,10 +127,10 @@ const Coaches = () => {
                 Entrenar con {entrenador.nombre.split(' ')[0]}
               </Button>
             </Card>
-          </Grid>
+          </SwiperSlide>
         ))}
-      </Grid>
-    </Box>
+      </Swiper>
+    </div>
   );
 };
 

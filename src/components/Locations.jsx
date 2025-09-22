@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, CardMedia, Chip, Grid, Typography } from "@mui/material";
 import { ORANGE_COLOR } from "../constants/colors";
-import { CheckCircle, LocationOn } from "@mui/icons-material";
+import { Call, CheckCircle, LocationOn } from "@mui/icons-material";
 
 const Locations = () => {
     const ubicaciones = [
@@ -16,7 +16,7 @@ const Locations = () => {
             {id : '1:3', label: 'Clases grupales'},
             {id : '1:4', label: 'Vestuarios'},
         ],
-        imagen: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=200&fit=crop'
+        imagen: '/src/assets/locations/location1.png'
     },
     {
         id: 2,
@@ -30,16 +30,16 @@ const Locations = () => {
             {id : '2:3', label: 'Crossfit'},
             {id : '2:4', label: 'Spa'},
         ],
-        imagen: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop'
+        imagen: '/src/assets/locations/location2.png'
     }
   ];
 
   return (
-    <Box>
+    <div>
       <Typography variant="h3" component="h2" gutterBottom align="center" sx={{ color: ORANGE_COLOR, mb: 4 }}>
         Nuestras Ubicaciones
       </Typography>
-      <Typography variant="h6" align="center" sx={{ mb: 6, color: 'text.secondary' }}>
+      <Typography variant="h6" align="center" sx={{ mb: 6, color: '#fff' }}>
         Encuentra el gym más cercano a ti
       </Typography>
       
@@ -52,6 +52,7 @@ const Locations = () => {
                 height="200"
                 image={ubicacion.imagen}
                 alt={ubicacion.nombre}
+                sx={{objectFit: 'contain'}}
               />
               <CardContent>
                 <Typography variant="h5" component="h3" gutterBottom color={ORANGE_COLOR}>
@@ -64,10 +65,12 @@ const Locations = () => {
                     {ubicacion.direccion}
                   </Typography>
                 </Box>
-
-                <Typography variant="body2" color="text.secondary" component="p">
-                  📞 {ubicacion.telefono}
-                </Typography>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                  <Call sx={{color: 'red'}}/>
+                  <Typography variant="body2" color="text.secondary" component="p">
+                    {ubicacion.telefono}
+                  </Typography>
+                </div>
 
                 <Typography variant="subtitle2" gutterBottom>
                   Horarios de atención:
@@ -106,7 +109,7 @@ const Locations = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </div>
   );
 };
 

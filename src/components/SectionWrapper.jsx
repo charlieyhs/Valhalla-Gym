@@ -2,7 +2,7 @@ import { Box, Container, Fade } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-const SectionWrapper = React.forwardRef(({ id, index, isEven, children }, ref) => {
+const SectionWrapper = React.forwardRef(({ id, index, children }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -29,11 +29,10 @@ const SectionWrapper = React.forwardRef(({ id, index, isEven, children }, ref) =
             ref={ref}
             id={id}
             data-id={index}
-            sx={{ 
+        sx={{ 
                 minHeight: '100vh', 
                 display: 'flex', 
                 alignItems: 'center',
-                backgroundColor: isEven ? '#f8f9fa' : 'white',
                 py: { xs: 5, md: 10 },
                 px: { xs: 2, md: 0 }
             }}
@@ -52,7 +51,7 @@ SectionWrapper.displayName = 'SectionWrapper';
 SectionWrapper.propTypes = {
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  isEven: PropTypes.bool,
+isEven: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 

@@ -68,6 +68,12 @@ const MENU_ITEMS = [
     href: '#precios',
     component: null
   },
+  { 
+    id: 'contactos', 
+    label: 'Contacto', 
+    href: '#contacto',
+    component: null
+  },
 ];
 
 const NAVBAR_HEIGHT = 70;
@@ -194,7 +200,7 @@ const Navbar = ({ sectionComponents = {} }) => {
     <>
         <CssBaseline />
         <ElevationScroll>
-            <AppBar position="sticky" className="navbar-glass">
+            <AppBar position="sticky">
               <Toolbar className="navbar-toolbar">
                   {/* Logo */}
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -252,7 +258,7 @@ const Navbar = ({ sectionComponents = {} }) => {
         <ScrollToTopButton />
       
         {/* Secciones */}
-        <Box sx={{ pt: 10 }}>
+        <Box>
             {MENU_ITEMS.map((item, index) => {
             const SectionComponent = sectionComponents[item.id];
             
@@ -263,7 +269,6 @@ const Navbar = ({ sectionComponents = {} }) => {
                     index={index}
                     title={item.label} 
                     ref={sectionRefs.current[index]}
-                    isEven={index % 2 === 0}
                     >
                     <SectionComponent /> 
                 </SectionWrapper>
