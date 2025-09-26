@@ -1,151 +1,126 @@
 import { 
-  Typography, 
-  Card, 
-  CardContent,
-  Button, 
+  Typography,
   Box,
-  Chip
+  Chip,
 } from '@mui/material';
-import { 
-  Schedule,
-} from '@mui/icons-material';
-import '../css/clases.css'
+
+import '../css/clases.css';
 import "swiper/css";
-import { ORANGE_COLOR } from '../constants/colors';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay } from 'swiper/modules';
+import "swiper/css/effect-cards";
+import { ORANGE_COLOR } from '../constants/colors';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination, EffectCards } from 'swiper/modules';
+import { useRef } from 'react';
+import { CLASES } from '../constants/clases';
+import ClassCard from './ClassCard';
 
 const Clases = () => {
-  const clases = [
-    {
-        id: 1,
-        nombre: 'CrossFit',
-        descripcion: 'Entrenamiento funcional de alta intensidad',
-        duracion: '60 min',
-        nivel: 'Intermedio',
-        imagen: '/src/assets/clases/crossfit.png',
-        horarios: [
-            {id : '1:1', label: '6:00 AM'},
-            {id : '1:2', label: '8:00 PM'},
-            {id : '1:3', label: '7:00 PM'},
-        ]
-    },
-    {
-        id: 2,
-        nombre: 'Yoga',
-        descripcion: 'Equilibrio entre mente y cuerpo',
-        duracion: '90 min',
-        nivel: 'Principiante',
-        imagen: '/src/assets/clases/yoga.jpg',
-        horarios: [
-            {id : '2:1', label: '6:00 AM'},
-            {id : '2:2', label: '8:00 PM'},
-            {id : '2:3', label: '7:00 PM'},
-        ]
-    },
-    {
-        id: 3,
-        nombre: 'Spinning',
-        descripcion: 'Ciclismo indoor con música energizante',
-        duracion: '45 min',
-        nivel: 'Todos los niveles',
-        imagen: '/src/assets/clases/spinning.png',
-        horarios: [
-            {id : '3:1', label: '6:00 AM'},
-            {id : '3:2', label: '8:00 PM'},
-            {id : '3:3', label: '7:00 PM'},
-        ]
-    },
-    {
-        id: 4,
-        nombre: 'Boxeo',
-        descripcion: 'Entrenamiento intenso que mejora tu coordinación.',
-        duracion: '60 min',
-        nivel: 'Todos los niveles',
-        imagen: '/src/assets/clases/boxeo.png',
-        horarios: [
-            {id : '4:1', label: '6:00 AM'},
-            {id : '4:2', label: '8:00 PM'},
-            {id : '4:3', label: '7:00 PM'},
-        ]
-    }
-  ];
+    const swiperRef = useRef(null);    
+    return (
+    <Box>
+        {/* Header mejorado */}
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Typography 
+                variant="h3" 
+                component="h2" 
+                gutterBottom 
+                sx={{ 
+                    color: ORANGE_COLOR,
+                    fontWeight: 'bold',
+                    mb: 2,
+                    background: `linear-gradient(45deg, ${ORANGE_COLOR}, #ff6b35)`,
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                }}
+            >
+                Nuestras Clases
+            </Typography>
+            <Typography 
+                variant="h6" 
+                sx={{ 
+                    mb: 2, 
+                    color: '#fff',
+                    opacity: 0.9
+                }}
+            >
+                Descubre la variedad de entrenamientos que tenemos para ti
+            </Typography>
+            <Typography 
+                variant="body1" 
+                sx={{ 
+                    color: '#fff',
+                    opacity: 0.7,
+                    maxWidth: 600,
+                    mx: 'auto'
+                }}
+            >
+                Desde entrenamientos de alta intensidad hasta clases de relajación, encuentra el perfecto para ti
+            </Typography>
+        </Box>
 
-  return (
-    <div>
-        <Typography variant="h3" component="h2" gutterBottom align="center" 
-            sx={{ color: ORANGE_COLOR, mb: 2 }}>
-            Nuestras Clases
-        </Typography>
-        <Typography variant="h6" 
-            align="center" sx={{ mb: 1, color: '#fff' }}>
-            Descubre la variedad de entrenamientos que tenemos para ti
-        </Typography>
-        <Swiper
-            modules={[Autoplay]}
-            spaceBetween={30}
-            slidesPerView={3}
-            loop={true}
-            grabCursor={true}
-            breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-            }}
-            autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            }}    
-        >
-            {clases.map((clase) => (
-                <SwiperSlide key={clase.id}>
-                    <Card className='card'>
-                        <CardContent>
-                            <div className="image-container">
-                                <img src={clase.imagen} alt={clase.nombre} className="image" />
-                            </div>
-                            <Typography variant="h5" component="h3" gutterBottom color={ORANGE_COLOR}>
-                                {clase.nombre}
-                            </Typography>
-
-                            <Typography variant="body2" color="text.secondary" component="p">
-                                {clase.descripcion}
-                            </Typography>
-                            
-                            <Box sx={{ display: 'flex', gap: 1, mb: 2, mt: 2 }}>
-                                <Chip icon={<Schedule />} label={clase.duracion} size="small" />
-                                <Chip label={clase.nivel} size="small" variant="outlined" />
-                            </Box>
-
-                            <Typography variant="subtitle2" gutterBottom>
-                                Horarios disponibles:
-                            </Typography>
-                            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 2 }}>
-                                {clase.horarios.map((horario) => (
-                                <Chip key={horario.id} label={horario.label} size="small" color="primary" />
-                                ))}
-                            </Box>
-
-                            <Button 
-                                variant="contained" 
-                                fullWidth 
-                                sx={{ 
-                                mt: 'auto',
-                                backgroundColor: ORANGE_COLOR,
-                                '&:hover': { backgroundColor: '#e55a2b' }
-                                }}
-                            >
-                                Reservar Clase
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </SwiperSlide>
+        {/* Filtros rápidos */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4, flexWrap: 'wrap' }}>
+            {['Todos', 'Alta Intensidad', 'Relajación', 'Principiante', 'Avanzado'].map((filter) => (
+                <Chip
+                key={filter}
+                label={filter}
+                clickable
+                sx={{
+                    backgroundColor: filter === 'Todos' ? ORANGE_COLOR : 'rgba(255, 255, 255, 0.1)',
+                    color: '#fff',
+                    '&:hover': {
+                        backgroundColor: filter === 'Todos' ? '#e55a2b' : `${ORANGE_COLOR}30`
+                    }
+                }}
+                />
             ))}
-        </Swiper>
-    </div>
-  );
+        </Box>
+
+        {/* Swiper */}
+        <Box sx={{ position: 'relative' }}>
+            <Swiper
+                ref={swiperRef}
+                modules={[Autoplay, Navigation, Pagination, EffectCards]}
+                spaceBetween={30}
+                slidesPerView={1}
+                centeredSlides={true}
+                loop={true}
+                grabCursor={true}
+                autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                    clickable: true,
+                    dynamicBullets: true,
+                    renderBullet: (index, className) => {
+                        return `<span class="${className}" style="background-color: ${ORANGE_COLOR}"></span>`;
+                    },
+                }}
+                navigation={true}
+                breakpoints={{
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 2 },
+                    1280: { slidesPerView: 3 }
+                }}
+                style={{
+                    padding: '20px 0 60px 0'
+                }}
+            >
+                {CLASES.map((clase) => (
+                    <SwiperSlide key={clase.id}>
+                        <ClassCard clase={clase} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </Box>
+    </Box>
+    );
 };
 
 export default Clases;
