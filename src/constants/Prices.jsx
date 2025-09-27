@@ -24,45 +24,51 @@ export const planes=[
     descripcion: 'Perfecto para comenzar tu journey fitness',
     beneficios: [
       {
+        id: '1:1',
         texto: 'Acceso al área de pesas',
         incluido: true,
         premium: false
       },
       {
+        id: '1:2',
         texto: 'Área de cardio completa',
         incluido: true,
         premium: false
       },
       {
+        id: '1:3',
         texto: 'Vestuarios y duchas',
         incluido: true,
         premium: false
       },
       {
+        id: '1:4',
         texto: 'Horario de 6AM a 10PM',
         incluido: true,
         premium: false
       },
       {
+        id: '1:5',
         texto: 'WiFi gratuito',
         incluido: true,
         premium: false
       },
       {
+        id: '1:6',
         texto: 'Casilleros de uso diario',
         incluido: true,
         premium: false
       }
     ],
     limitaciones: [
-      'Sin acceso a clases grupales',
-      'Una sede únicamente',
-      'Sin invitados'
+      {id: '1:1', label: 'Sin acceso a clases grupales'},
+      {id: '1:2', label: 'Una sede únicamente'},
+      {id: '1:3', label: 'Sin invitados'}
     ],
     targetAudience: [
-      'Principiantes',
-      'Presupuesto ajustado',
-      'Entrenamientos básicos'
+      {id: '1:1', label: 'Principiantes'},
+      {id: '1:2', label: 'Presupuesto ajustado'},
+      {id: '1:3', label: 'Entrenamientos básicos'},
     ],
     garantia: '30 días',
     includes: {
@@ -74,8 +80,8 @@ export const planes=[
       sedes: 1
     },
     promociones: [
-      'Primera semana gratis',
-      '50% descuento en productos'
+      {id: '1:1', label: 'Primera semana gratis'},
+      {id: '1:2', label: '50% descuento en productos'}
     ],
     satisfaccion: 87
   },
@@ -101,54 +107,62 @@ export const planes=[
     descripcion: 'La opción más completa para resultados serios',
     beneficios: [
       {
+        id: '2:1',
         texto: 'Todo lo del plan Básico',
         incluido: true,
         premium: false
       },
       {
+        id: '2:2',
         texto: 'Clases grupales ilimitadas',
         incluido: true,
         premium: true
       },
       {
+        id: '2:3',
         texto: 'Acceso a todas las sedes',
         incluido: true,
         premium: true
       },
       {
+        id: '2:4',
         texto: 'Horario 24/7 fines de semana',
         incluido: true,
         premium: true
       },
       {
+        id: '2:5',
         texto: '2 invitados por mes',
         incluido: true,
         premium: true
       },
       {
+        id: '2:6',
         texto: '30% descuento en productos',
         incluido: true,
         premium: true
       },
       {
+        id: '2:7',
         texto: 'App móvil con seguimiento',
         incluido: true,
         premium: true
       },
       {
+        id: '2:8',
         texto: 'Evaluación física mensual',
         incluido: true,
         premium: true
       }
     ],
     limitaciones: [
-      'Entrenamiento personalizado no incluido',
-      'Sin acceso a spa premium'
+      {id: '2:1', label: 'Entrenamiento personalizado no incluido'},
+      {id: '2:2', label: 'Sin acceso a spa premium'}
     ],
     targetAudience: [
-      'Usuarios regulares',
-      'Amantes de clases',
-      'Flexibilidad de horarios'
+      {id: '2:1', label: 'Principiantes'},
+      {id: '2:1', label: 'Principiantes'},
+      {id: '2:1', label: 'Principiantes'},
     ],
     garantia: '60 días',
     includes: {
@@ -160,9 +174,9 @@ export const planes=[
       sedes: 'Todas'
     },
     promociones: [
-      'Matrícula gratis',
-      'Kit de bienvenida',
-      'Mes adicional gratis (anual)'
+      {id: '2:1', label: 'Matrícula gratis'},
+      {id: '2:2', label: 'Kit de bienvenida'},
+      {id: '2:3', label: 'Mes adicional gratis (anual)'},
     ],
     satisfaccion: 94,
     valorExtra: 180000
@@ -190,46 +204,55 @@ export const planes=[
     descripcion: 'Experiencia premium con atención personalizada',
     beneficios: [
       {
+        id: '3:1',
         texto: 'Todo lo del plan Premium',
         incluido: true,
         premium: false
       },
       {
+        id: '3:2',
         texto: '4 sesiones de entrenamiento personalizado',
         incluido: true,
         premium: true
       },
       {
+        id: '3:3',
         texto: 'Asesoría nutricional mensual',
         incluido: true,
         premium: true
       },
       {
+        id: '3:4',
         texto: 'Acceso completo a spa y sauna',
         incluido: true,
         premium: true
       },
       {
+        id: '3:5',
         texto: 'Estacionamiento VIP gratuito',
         incluido: true,
         premium: true
       },
       {
+        id: '3:6',
         texto: 'Toallas y amenities incluidos',
         incluido: true,
         premium: true
       },
       {
+        id: '3:7',
         texto: 'Reserva prioritaria en clases',
         incluido: true,
         premium: true
       },
       {
+        id: '3:8',
         texto: 'Masajes de recuperación (2/mes)',
         incluido: true,
         premium: true
       },
       {
+        id: '3:9',
         texto: 'Plan nutricional personalizado',
         incluido: true,
         premium: true
@@ -239,9 +262,9 @@ export const planes=[
       
     ],
     targetAudience: [
-      'Ejecutivos',
-      'Resultados premium',
-      'Comodidad máxima'
+      {id: '3:1', label: 'Ejecutivos'},
+      {id: '3:2', label: 'Resultados premium'},
+      {id: '3:3', label: 'Comodidad máxima'}
     ],
     garantia: '90 días',
     includes: {
@@ -253,9 +276,9 @@ export const planes=[
       sedes: 'Todas + Acceso VIP'
     },
     promociones: [
-      '3 meses = precio de 2',
-      'Evaluación corporal gratis',
-      'Consulta médica incluida'
+      {id: '3:1', label: '3 meses = precio de 2'},
+      {id: '3:2', label: 'Evaluación corporal gratis'},
+      {id: '3:3', label: 'Consulta médica incluida'}
     ],
     satisfaccion: 98,
     valorExtra: 350000
@@ -327,3 +350,28 @@ export const testimonios = [
     tiempo: "3 meses"
   }
 ];
+
+export const questions = [
+  {
+    id: '1',
+    q: "¿Puedo cambiar de plan después?",
+    a: "Sí, puedes actualizar o cambiar tu plan en cualquier momento."
+  },
+  {
+    id: '2',
+    q: "¿Hay periodo de prueba?",
+    a: "Ofrecemos una clase gratuita para que conozcas nuestras instalaciones."
+  },
+  {
+    id: '3',
+    q: "¿Qué incluye la matrícula?",
+    a: "Evaluación física, tour por las instalaciones y configuración de tu plan."
+  }
+];
+
+export const caracteristicas = [
+  {id: '1', label: 'Sedes disponibles'}, 
+  {id: '2', label: 'Clases grupales'},
+  {id: '3', label: 'Invitados/mes'},
+  {id: '4', label: 'Entrenador personal'}
+]
