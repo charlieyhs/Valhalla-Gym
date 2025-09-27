@@ -1,58 +1,52 @@
-import React, { useState, useRef, useCallback, useMemo} from 'react';
-import { 
-  AppBar, 
-  Box, 
-  Button, 
-  Toolbar, 
-  Typography,
-  CssBaseline,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Chip,
-  Fade,
-  Slide,
-  Tooltip
-} from "@mui/material";
-import { 
-  FitnessCenter, 
-  Menu as MenuIcon, 
-  Close as CloseIcon,
-  WhatsApp,
-  Phone,
-  Star,
-  Celebration,
+import {
+    Celebration,
+    FitnessCenter,
+    Menu as MenuIcon,
+    Phone,
+    Star,
+    WhatsApp
 } from "@mui/icons-material";
-import { ORANGE_COLOR } from '../../constants/colors';
-import useScrollDetection from '../../hooks/UseScrollDetection';
-import ElevationScroll from '../navbar/ElevationScroll';
-import ScrollToTopButton from '../ScrollToTopButton';
-import SectionWrapper from '../navbar/SectionWrapper';
+import {
+    AppBar,
+    Box,
+    Button,
+    Chip,
+    CssBaseline,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Fade,
+    IconButton,
+    Slide,
+    Toolbar,
+    Tooltip,
+    Typography
+} from "@mui/material";
 import PropTypes from 'prop-types';
-import '../../css/nav-bar.css'
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { ORANGE_COLOR } from '../../constants/colors';
+import '../../css/nav-bar.css';
 import { SECCIONES } from '../../data/navbar';
+import useScrollDetection from '../../hooks/UseScrollDetection';
+import DesktopMenu from '../navbar/DesktopMenu';
+import ElevationScroll from '../navbar/ElevationScroll';
+import MobileMenu from '../navbar/MobileMenu';
+import SectionWrapper from '../navbar/SectionWrapper';
+import ScrollToTopButton from '../ScrollToTopButton';
 
 const NAVBAR_HEIGHT = 70;
+
+const MemoizedSectionWrapper = React.memo(SectionWrapper);
 
 const Navbar = ({ sectionComponents = {} }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [joinNowDialog, setJoinNowDialog] = useState(false);
 
-    const sectionRefs = useRef([]);
+    const sectionRefs = useRef(SECCIONES.map(() => React.createRef()));
 
-    if (sectionRefs.current.length !== SECCIONES.length) {
-        sectionRefs.current = Array(SECCIONES.length).fill().map((_, i) => sectionRefs.current[i] || React.createRef());
-    }
     const activeSection = useScrollDetection(sectionRefs);
-
 
     const scrollToSection = useCallback((index) => {
         const targetRef = sectionRefs.current[index];
@@ -86,173 +80,23 @@ const Navbar = ({ sectionComponents = {} }) => {
         window.open('https://wa.me/571234567890?text=Hola!%20Me%20interesa%20unirme%20a%20Valhalla%20Gym', '_blank');
     };
 
-    // Renderizado del menú para desktop
-    const DesktopMenu = useMemo(() => (
-        <Fade in={true} timeout={800}>
-            <Box sx={{ 
-                display: { xs: 'none', md: 'flex',},
-                ml: 10,
-                alignItems: 'center',
-                gap: 1
-            }}>
-                {SECCIONES.map((item, index) => (
-                    <Box key={item.id} sx={{ position: 'relative' }}>
-                        <Button 
-                            onClick={() => scrollToSection(index)}
-                            className={`nav-item ${activeSection === index ? "active" : ""} ${item.featured ? "featured" : ""}`}
-                            aria-label={`Ir a sección ${item.label}`}
-                            sx={{
-                                minWidth: 'auto',
-                                px: 2,
-                                position: 'relative',
-                                overflow: 'visible'
-                            }}
-                        >
-                            {item.label}
-                            {item.badge && (
-                                <Chip
-                                    label={item.badge}
-                                    size="small"
-                                    sx={{
-                                    position: 'absolute',
-                                    top: -8,
-                                    right: -5,
-                                    backgroundColor: ORANGE_COLOR,
-                                    color: 'white',
-                                    fontSize: '0.6rem',
-                                    height: 16,
-                                    '& .MuiChip-label': { px: 1 }
-                                    }}
-                                />
-                            )}
-                        </Button>
-                    </Box>
-                ))}
-            </Box>
-        </Fade>
-    ), [activeSection, scrollToSection]);
-
-    // Renderizado del menú móvil
-    const MobileMenu = useMemo(() => (
-        <Drawer
-            anchor="right"
-            open={mobileMenuOpen}
-            onClose={handleMobileMenuToggle}
-            sx={{
-            display: { xs: 'block', md: 'none' },
-            '& .MuiDrawer-paper': {
-                width: 320,
-                backgroundColor: 'rgba(10, 10, 10, 0.95)',
-                backdropFilter: 'blur(20px)',
-                color: 'white',
-                borderLeft: `1px solid ${ORANGE_COLOR}30`
-            }
-            }}
-        >
-            <Box sx={{ 
-                p: 2, 
-                background: `linear-gradient(135deg, ${ORANGE_COLOR}20, transparent)`,
-                borderBottom: `1px solid ${ORANGE_COLOR}20`
-            }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                    <Typography variant="h6" sx={{ color: ORANGE_COLOR, fontWeight: 'bold' }}>
-                    Menú
-                    </Typography>
-                    <IconButton 
-                    onClick={handleMobileMenuToggle} 
-                    sx={{ 
-                        color: 'white',
-                        backgroundColor: 'rgba(255,255,255,0.1)',
-                        '&:hover': { backgroundColor: ORANGE_COLOR }
-                    }}
-                    >
-                    <CloseIcon />
-                    </IconButton>
-                </Box>
-                
-                {/* Botones rápidos móvil */}
-                <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-                    <IconButton 
-                    sx={{ 
-                        backgroundColor: '#25D366',
-                        color: 'white',
-                        fontSize: '0.8rem',
-                        '&:hover': { backgroundColor: '#20b858' }
-                    }}
-                    onClick={handleWhatsAppClick}
-                    >
-                    <WhatsApp />
-                    </IconButton>
-                    <Button 
-                    variant="contained"
-                    size="small"
-                    onClick={handleJoinNow}
-                    sx={{
-                        flex: 1,
-                        backgroundColor: ORANGE_COLOR,
-                        '&:hover': { backgroundColor: '#e55a2b' }
-                    }}
-                    >
-                    Unirse
-                    </Button>
-                </Box>
-            </Box>
-
-            <List sx={{ p: 2 }}>
-                {SECCIONES.map((item, index) => (
-                    <ListItem key={item.id} disablePadding sx={{ mb: 1 }}>
-                        <ListItemButton 
-                            onClick={() => scrollToSection(index)}
-                            sx={{
-                                backgroundColor: activeSection === index ? `${ORANGE_COLOR}20` : 'transparent',
-                                border: activeSection === index ? `1px solid ${ORANGE_COLOR}40` : '1px solid transparent',
-                                borderRadius: 2,
-                                py: 1.5,
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    backgroundColor: `${ORANGE_COLOR}15`,
-                                    transform: 'translateX(4px)'
-                                }
-                            }}
-                        >
-                            <ListItemText 
-                                primary={item.label}
-                                slotProps={{
-                                    primary:{
-                                        sx:{
-                                            fontWeight: activeSection === index ? 'bold' : 'normal',
-                                            color: activeSection === index ? `${ORANGE_COLOR}` : 'white',
-                                        }
-                                    }
-                                }}
-                            />
-                            {item.badge && (
-                                <Chip 
-                                    label={item.badge} 
-                                    size="small" 
-                                    sx={{ 
-                                        backgroundColor: ORANGE_COLOR,
-                                        color: 'white',
-                                        fontSize: '0.6rem'
-                                    }} 
-                                />
-                            )}
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-
-            {/* Información de contacto móvil */}
-            <Box sx={{ p: 2, mt: 'auto', borderTop: `1px solid ${ORANGE_COLOR}20` }}>
-                <Typography variant="body2" sx={{ color: ORANGE_COLOR, mb: 1, fontWeight: 'bold' }}>
-                    Contacto Rápido
-                </Typography>
-                <Typography variant="caption" sx={{ color: 'white', opacity: 0.8 }}>
-                    Lunes a Domingo: 5AM - 11PM
-                </Typography>
-            </Box>
-        </Drawer>
-    ), [mobileMenuOpen, activeSection, scrollToSection, handleMobileMenuToggle, handleJoinNow]);
+    // PRE-CALCULAR SECCIONES MEMOIZADAS
+    const memoizedSections = useMemo(() => {
+        return SECCIONES.map((item, index) => {
+            const SectionComponent = sectionComponents[item.id];
+            return (
+                <MemoizedSectionWrapper
+                    key={item.id}
+                    id={item.id}
+                    index={index}
+                    title={item.label}
+                    ref={sectionRefs.current[index]}
+                >
+                    <SectionComponent />
+                </MemoizedSectionWrapper>
+            );
+        });
+    }, [sectionComponents]);
 
     return (
     <>
@@ -313,7 +157,9 @@ const Navbar = ({ sectionComponents = {} }) => {
                     </Slide>
                 
                     <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
-                        {DesktopMenu}
+                        {/*Renderizado del menú para desktop*/}
+                        <DesktopMenu activeSection={activeSection} 
+                            scrollToSection={scrollToSection} />
                     </Box>
 
                     <Fade in={true} timeout={1000}>
@@ -382,29 +228,18 @@ const Navbar = ({ sectionComponents = {} }) => {
         </ElevationScroll>
 
         {/* Menú móvil */}
-        {MobileMenu}
+        <MobileMenu mobileMenuOpen={mobileMenuOpen}
+            activeSection={activeSection}
+            scrollToSection={scrollToSection}
+            handleMobileMenuToggle={handleMobileMenuToggle}
+            handleJoinNow={handleJoinNow}
+            handleWhatsAppClick={handleWhatsAppClick} />
         
         {/* Botón scroll to top */}
         <ScrollToTopButton />
 
         {/* Secciones */}
-        <Box>
-            {SECCIONES.map((item, index) => {
-                const SectionComponent = sectionComponents[item.id];
-                
-                return (
-                    <SectionWrapper
-                        key={item.id} 
-                        id={item.id}
-                        index={index}
-                        title={item.label} 
-                        ref={sectionRefs.current[index]}
-                        >
-                        <SectionComponent /> 
-                    </SectionWrapper>
-                );
-            })}
-        </Box>
+        <Box>{memoizedSections}</Box>
 
         {/* Dialog de unirse */}
         <Dialog 
@@ -463,4 +298,5 @@ const Navbar = ({ sectionComponents = {} }) => {
 Navbar.propTypes = {
     sectionComponents: PropTypes.objectOf(PropTypes.elementType)
 };
-export default Navbar;
+
+export default React.memo(Navbar);

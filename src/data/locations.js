@@ -43,7 +43,7 @@ export const ubicaciones =[
         icon: '📶'
       }
     ],
-    imagen: '/src/assets/locations/location1.png',
+    imagen: '/src/assets/locations/location1.webp',
     rating: 4.8,
     distancia: '2.1 km',
     capacidad: 150,
@@ -99,7 +99,7 @@ export const ubicaciones =[
         icon: '🔥'
       }
     ],
-    imagen: '/src/assets/locations/location2.png',
+    imagen: '/src/assets/locations/location2.webp',
     rating: 4.6,
     distancia: '5.3 km',
     capacidad: 200,

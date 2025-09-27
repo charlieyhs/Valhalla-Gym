@@ -33,7 +33,7 @@ export default function Hero() {
             <Grid size={{xs:12, md:6}} sx={{ textAlign: "center" }}>
                 <div className="hero-illustration">
                     <img
-                        src="/src/assets/gym-3d.png"
+                        src="/src/assets/gym-3d.webp"
                         alt="3D Gym Illustration"
                         style={{ width: "100%", maxWidth: '70%'}}
                     />
