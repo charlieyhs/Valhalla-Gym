@@ -1,3 +1,9 @@
+import {entrenador1Img,
+  entrenador2Img,
+  entrenador3Img,
+  entrenador4Img
+} from '../assets/images';
+
 export const ENTRENADORES = [
   {
     id: 1,
@@ -26,7 +32,7 @@ export const ENTRENADORES = [
     ],
     rating: 4.9,
     reviewCount: 156,
-    imagen: '/src/assets/coaches/entrenador1.webp',
+    imagen: entrenador1Img,
     descripcion: 'Especialista en entrenamientos funcionales de alta intensidad con enfoque en CrossFit competitivo',
     descripcionLarga: 'Carlos es un entrenador apasionado con más de 8 años de experiencia en CrossFit y entrenamiento funcional. Ha entrenado atletas de élite y ayudado a cientos de personas a transformar sus vidas a través del fitness.',
     especialidades: [
@@ -85,7 +91,7 @@ export const ENTRENADORES = [
     ],
     rating: 4.8,
     reviewCount: 203,
-    imagen: '/src/assets/coaches/entrenador3.webp',
+    imagen: entrenador3Img,
     descripcion: 'Instructora certificada en yoga y pilates con enfoque holístico en bienestar integral',
     descripcionLarga: 'María combina técnicas ancestrales de yoga con métodos modernos de Pilates para crear experiencias transformadoras que nutren tanto el cuerpo como la mente.',
     especialidades: [
@@ -146,7 +152,7 @@ export const ENTRENADORES = [
     ],
     rating: 4.9,
     reviewCount: 189,
-    imagen: '/src/assets/coaches/entrenador2.webp',
+    imagen: entrenador2Img,
     descripcion: 'Entrenador personal especializado en fuerza y desarrollo muscular con enfoque científico',
     descripcionLarga: 'David es un experto en fisiología del ejercicio con una década de experiencia ayudando a atletas y entusiastas del fitness a maximizar su potencial de fuerza y masa muscular.',
     especialidades: [
@@ -205,7 +211,7 @@ export const ENTRENADORES = [
     ],
     rating: 4.7,
     reviewCount: 142,
-    imagen: '/src/assets/coaches/entrenador4.webp',
+    imagen: entrenador4Img,
     descripcion: 'Especialista en entrenamiento funcional y ejercicio correctivo para prevención de lesiones',
     descripcionLarga: 'Luisa se especializa en movimiento funcional y rehabilitación, ayudando a sus clientes a moverse mejor, sentirse más fuertes y prevenir lesiones a través del ejercicio inteligente.',
     especialidades: [

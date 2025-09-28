@@ -1,3 +1,7 @@
+import {location1Img,
+  location2Img
+} from '../assets/images';
+
 export const ubicaciones =[
   {
     id: 1,
@@ -43,7 +47,7 @@ export const ubicaciones =[
         icon: '📶'
       }
     ],
-    imagen: '/src/assets/locations/location1.webp',
+    imagen: location1Img,
     rating: 4.8,
     distancia: '2.1 km',
     capacidad: 150,
@@ -99,7 +103,7 @@ export const ubicaciones =[
         icon: '🔥'
       }
     ],
-    imagen: '/src/assets/locations/location2.webp',
+    imagen: location2Img,
     rating: 4.6,
     distancia: '5.3 km',
     capacidad: 200,
