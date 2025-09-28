@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "powershell -Command \"git checkout main; git pull origin main; npm run build; git add docs; if ((git status --porcelain) -ne '') { git commit -m 'Deploy build'; git push origin main }\""
+    "deploy": "powershell -Command \"Remove-Item -Recurse -Force docs; git checkout main; git pull origin main; npm run build; git add docs; if ((git status --porcelain) -ne '') { git commit -m 'Deploy build'; git push origin main }\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
