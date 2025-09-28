@@ -1,4 +1,4 @@
-import { CalendarMonth, WhatsApp } from "@mui/icons-material";
+import { CalendarMonth, WhatsApp } from "../../icons/icons";;
 import { Box, Button, Typography } from "@mui/material";
 import { ORANGE_COLOR } from "../../constants/colors";
 

@@ -1,7 +1,7 @@
 import { Box, Button, Chip, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import { ORANGE_COLOR } from "../../constants/colors";
-import { Close, WhatsApp } from "@mui/icons-material";
+import { Close, WhatsApp } from "../../icons/icons";;
 import { SECCIONES } from "../../data/navbar";
 import PropTypes from "prop-types";
 

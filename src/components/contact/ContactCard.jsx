@@ -24,40 +24,49 @@ const ContactCard = ({contact, index}) => {
                     overflow: 'hidden',
                     position: 'relative',
                     '&:before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: 4,
-                    background: `linear-gradient(90deg, ${contact.color}, ${contact.color}80)`,
-                    transform: 'scaleX(0)',
-                    transition: 'transform 0.3s ease',
-                    transformOrigin: 'left'
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: 4,
+                        background: `linear-gradient(90deg, ${contact.color}, ${contact.color}80)`,
+                        transform: 'scaleX(0)',
+                        transition: 'transform 0.3s ease',
+                        transformOrigin: 'left'
                     },
                     '&:hover:before': {
-                    transform: 'scaleX(1)'
+                        transform: 'scaleX(1)'
                     }
                 }}
                 onMouseEnter={() => setHoveredCard(contact.id)}
                 onMouseLeave={() => setHoveredCard(null)}
                 onClick={() => handleContactClick(contact)}
             >
-            <CardContent sx={{ p: 4, textAlign: 'center', color: '#fff', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ p: 4, 
+                    textAlign: 'center', 
+                    color: '#fff', 
+                    height: '100%', 
+                    display: 'flex', 
+                    flexDirection: 'column',
+                    alignItems: 'center',}}
+            >
                 {/* Icono con fondo circular */}
-                <Box
+                <Box 
                     sx={{
                         display: 'inline-flex',
+                        justifyContent: 'center',
                         p: 2,
                         borderRadius: '50%',
                         backgroundColor: `${contact.color}20`,
                         color: contact.color,
                         mb: 3,
                         transition: 'all 0.3s ease',
-                        transform: hoveredCard === contact.id ? 'scale(1.1) rotate(5deg)' : 'none'
+                        transform: hoveredCard === contact.id ? 'scale(1.1) rotate(5deg)' : 'none',
+                        width: 'min-content'
                     }}
                 >
-                {contact.icon}
+                    {contact.icon}
                 </Box>
     
                 {/* Título */}

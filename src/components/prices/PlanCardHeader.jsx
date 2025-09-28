@@ -1,4 +1,4 @@
-import { EmojiEvents, LocalOffer } from "@mui/icons-material";
+import { EmojiEvents, LocalOffer } from "../../icons/icons";;
 import { Box, Chip, Grid, Stack } from "@mui/material";
 import PropTypes from "prop-types";
 import { formatPrice } from "../../utils/NumbersUtil";

@@ -8,7 +8,7 @@ import {
     Schedule,
     Share,
     Star
-} from "@mui/icons-material";
+} from "../../icons/icons";
 import {
     Avatar,
     Box,
@@ -132,12 +132,13 @@ const ClassCard = ({ clase }) => {
                         image={clase.imagen}
                         alt={clase.nombre}
                         sx={{
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.4s ease'
+                            height: '100%',
+                            objectFit: 'cover',
+                            transition: 'transform 0.4s ease'
                         }}
+                        loading="lazy"
                     />
-                
+
                     {/* Overlay con acciones */}
                     <Box sx={{
                             position: 'absolute',

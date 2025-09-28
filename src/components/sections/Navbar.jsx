@@ -5,7 +5,7 @@ import {
     Phone,
     Star,
     WhatsApp
-} from "@mui/icons-material";
+} from "../../icons/icons";;
 import {
     AppBar,
     Box,
@@ -25,7 +25,7 @@ import {
     Typography
 } from "@mui/material";
 import PropTypes from 'prop-types';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ORANGE_COLOR } from '../../constants/colors';
 import '../../css/nav-bar.css';
 import { SECCIONES } from '../../data/navbar';
@@ -35,20 +35,42 @@ import ElevationScroll from '../navbar/ElevationScroll';
 import MobileMenu from '../navbar/MobileMenu';
 import SectionWrapper from '../navbar/SectionWrapper';
 import ScrollToTopButton from '../ScrollToTopButton';
+import { useSmartPreloading } from "../../hooks/useSmartPreloading";
 
 const NAVBAR_HEIGHT = 70;
-
-const MemoizedSectionWrapper = React.memo(SectionWrapper);
 
 const Navbar = ({ sectionComponents = {} }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [joinNowDialog, setJoinNowDialog] = useState(false);
+    
+    const [pendingSection, setPendingSection] = useState(null);
+    const scrollTimeoutRef = useRef(null);
 
     const sectionRefs = useRef(SECCIONES.map(() => React.createRef()));
 
-    const activeSection = useScrollDetection(sectionRefs);
+    const detectedActiveSection = useScrollDetection(sectionRefs, {
+        threshold: 0.25,
+        scrollDelay: 16
+    });
+
+    const activeSection = pendingSection !== null ? pendingSection : detectedActiveSection;
+
+    const loadedSections = useSmartPreloading(activeSection, SECCIONES.length, {
+        preloadAdjacent: 2,
+        immediateSections: [0]
+    });
 
     const scrollToSection = useCallback((index) => {
+        
+        
+        
+        setPendingSection(index);
+        
+        // Limpiar timeout anterior si existe
+        if (scrollTimeoutRef.current) {
+            clearTimeout(scrollTimeoutRef.current);
+        }
+        
         const targetRef = sectionRefs.current[index];
         if (targetRef?.current) {
             const yOffset = -NAVBAR_HEIGHT + 10;
@@ -60,9 +82,22 @@ const Navbar = ({ sectionComponents = {} }) => {
                 behavior: 'smooth'
             });
             
+            
+            scrollTimeoutRef.current = setTimeout(() => {
+                setPendingSection(null);
+            }, 1000); // Esperar 1 segundo para que termine el scroll
+            
             setMobileMenuOpen(false);
         }
     }, []);
+
+    
+    useEffect(() => {
+        if (pendingSection === null && scrollTimeoutRef.current) {
+            clearTimeout(scrollTimeoutRef.current);
+            scrollTimeoutRef.current = null;
+        }
+    }, [pendingSection]);
 
     const handleMobileMenuToggle = useCallback(() => {
         setMobileMenuOpen(prev => !prev);
@@ -80,23 +115,29 @@ const Navbar = ({ sectionComponents = {} }) => {
         window.open('https://wa.me/571234567890?text=Hola!%20Me%20interesa%20unirme%20a%20Valhalla%20Gym', '_blank');
     };
 
-    // PRE-CALCULAR SECCIONES MEMOIZADAS
-    const memoizedSections = useMemo(() => {
-        return SECCIONES.map((item, index) => {
+    const renderedSections = useMemo(() => 
+        SECCIONES.map((item, index) => {
             const SectionComponent = sectionComponents[item.id];
+            const isPriority = loadedSections.has(index);
+            
+            if (!SectionComponent) {
+                console.warn(`Component for section ${item.id} not found`);
+                return null;
+            }
+            
             return (
-                <MemoizedSectionWrapper
+                <SectionWrapper
                     key={item.id}
                     id={item.id}
                     index={index}
-                    title={item.label}
                     ref={sectionRefs.current[index]}
+                    priority={isPriority}
                 >
                     <SectionComponent />
-                </MemoizedSectionWrapper>
+                </SectionWrapper>
             );
-        });
-    }, [sectionComponents]);
+        }).filter(Boolean),
+    [sectionComponents, loadedSections]);
 
     return (
     <>
@@ -158,8 +199,10 @@ const Navbar = ({ sectionComponents = {} }) => {
                 
                     <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
                         {/*Renderizado del menú para desktop*/}
-                        <DesktopMenu activeSection={activeSection} 
-                            scrollToSection={scrollToSection} />
+                        <DesktopMenu 
+                            activeSection={activeSection} 
+                            scrollToSection={scrollToSection} 
+                        />
                     </Box>
 
                     <Fade in={true} timeout={1000}>
@@ -228,18 +271,20 @@ const Navbar = ({ sectionComponents = {} }) => {
         </ElevationScroll>
 
         {/* Menú móvil */}
-        <MobileMenu mobileMenuOpen={mobileMenuOpen}
+        <MobileMenu 
+            mobileMenuOpen={mobileMenuOpen}
             activeSection={activeSection}
             scrollToSection={scrollToSection}
             handleMobileMenuToggle={handleMobileMenuToggle}
             handleJoinNow={handleJoinNow}
-            handleWhatsAppClick={handleWhatsAppClick} />
+            handleWhatsAppClick={handleWhatsAppClick} 
+        />
         
         {/* Botón scroll to top */}
         <ScrollToTopButton />
 
         {/* Secciones */}
-        <Box>{memoizedSections}</Box>
+        <Box>{renderedSections}</Box>
 
         {/* Dialog de unirse */}
         <Dialog 

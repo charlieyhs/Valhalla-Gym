@@ -1,7 +1,7 @@
 import {
   Info,
   Security
-} from "@mui/icons-material";
+} from "../../icons/icons";;
 import {
   Box,
   Button,

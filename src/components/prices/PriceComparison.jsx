@@ -1,5 +1,5 @@
 import { Grid, Paper, Typography } from "@mui/material";
-import { Close, CompareArrows, Done } from "@mui/icons-material";
+import { Close, CompareArrows, Done } from "../../icons/icons";;
 import { GREEN_COLOR, ORANGE_COLOR, RED_COLOR } from "../../constants/colors";
 import { caracteristicas, planes } from "../../data/Prices";
 

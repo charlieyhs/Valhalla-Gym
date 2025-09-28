@@ -1,5 +1,5 @@
 import { Avatar, Box, Card, Chip, Grid, Paper, Typography } from "@mui/material";
-import { Star, ThumbUp } from "@mui/icons-material";
+import { Star, ThumbUp } from "../../icons/icons";;
 import { ORANGE_COLOR } from "../../constants/colors";
 import { testimonios } from "../../data/Prices";
 
@@ -44,6 +44,11 @@ const Testimonials = () => {
                                 src={testimonio.avatar}
                                 alt={testimonio.nombre}
                                 sx={{ width: 50, height: 50, mr: 2, bgcolor: ORANGE_COLOR }}
+                                slotProps={{
+                                    img: {
+                                        loading: "lazy",
+                                    },
+                                }}
                             >
                                 {testimonio.nombre.charAt(0)}
                             </Avatar>

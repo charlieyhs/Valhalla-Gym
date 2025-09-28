@@ -1,4 +1,4 @@
-import { Phone, Schedule, WhatsApp } from "@mui/icons-material";
+import { Phone, Schedule, WhatsApp } from "../../icons/icons";;
 import {
   Box,
   Button,

@@ -1,4 +1,4 @@
-import { Info } from "@mui/icons-material";
+import InfoIcon from '@mui/icons-material/Info';
 import {
   Box,
   Button,
@@ -210,7 +210,7 @@ const BenefitCard = ({ benefit, index }) => {
                 <Button
                   variant="outlined"
                   size="small"
-                  startIcon={<Info />}
+                  startIcon={<InfoIcon />}
                   sx={{
                     borderColor: benefit.color,
                     color: benefit.color,

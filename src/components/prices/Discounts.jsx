@@ -1,5 +1,5 @@
 import { Box, Button, Card, Chip, Grid, Paper, Typography } from "@mui/material";
-import { LocalOffer } from "@mui/icons-material";
+import { LocalOffer } from "../../icons/icons";;
 import { ORANGE_COLOR } from "../../constants/colors";
 import { descuentosEspeciales } from "../../data/Prices";
 

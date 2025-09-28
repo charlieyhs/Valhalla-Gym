@@ -11,7 +11,7 @@ import {
 import {
   Security,
   CheckCircle,
-} from "@mui/icons-material";
+} from "../../icons/icons";;
 import { ORANGE_COLOR } from "../../constants/colors";
 import { additionalFeatures, benefits } from "../../data/benefits";
 import BenefitCard from "../benefits/BenefitCard";

@@ -1,4 +1,4 @@
-import { Email, Facebook, Instagram, Phone, WhatsApp } from "@mui/icons-material";
+import { Email, Facebook, Instagram, Phone, WhatsApp } from "../icons/icons";;
 
 export const contacts = [
   { 

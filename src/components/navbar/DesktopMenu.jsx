@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const DesktopMenu = React.memo(function DesktopMenu({activeSection, scrollToSection}) {
     return (
-        <Fade in={true} timeout={800}>
+        <Fade in={true} timeout={500}>
             <Box sx={{ 
                 display: { xs: 'none', md: 'flex',},
                 ml: 10,
@@ -32,14 +32,14 @@ const DesktopMenu = React.memo(function DesktopMenu({activeSection, scrollToSect
                                     label={item.badge}
                                     size="small"
                                     sx={{
-                                    position: 'absolute',
-                                    top: -8,
-                                    right: -5,
-                                    backgroundColor: ORANGE_COLOR,
-                                    color: 'white',
-                                    fontSize: '0.6rem',
-                                    height: 16,
-                                    '& .MuiChip-label': { px: 1 }
+                                        position: 'absolute',
+                                        top: -8,
+                                        right: -5,
+                                        backgroundColor: ORANGE_COLOR,
+                                        color: 'white',
+                                        fontSize: '0.6rem',
+                                        height: 16,
+                                        '& .MuiChip-label': { px: 1 }
                                     }}
                                 />
                             )}

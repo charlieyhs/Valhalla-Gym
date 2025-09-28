@@ -24,7 +24,7 @@ import {
   Phone,
   WhatsApp,
   Share,
-} from "@mui/icons-material";
+} from "../../icons/icons";;
 import { useState } from "react";
 import { ORANGE_COLOR } from "../../constants/colors";
 import { useAlert } from "../../hooks/useAlert";
@@ -170,6 +170,7 @@ const Locations = () => {
                     objectFit: "cover",
                     transition: "transform 0.3s ease",
                   }}
+                  loading="lazy"
                 />
 
                 {/* Overlay con información rápida */}

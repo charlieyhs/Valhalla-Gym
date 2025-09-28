@@ -36,6 +36,7 @@ export default function Hero() {
                         src="/src/assets/gym-3d.webp"
                         alt="3D Gym Illustration"
                         style={{ width: "100%", maxWidth: '70%'}}
+                        loading="lazy"
                     />
                 </div>
             </Grid>

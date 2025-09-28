@@ -11,7 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { CheckCircle, WhatsApp } from "@mui/icons-material";
+import { CheckCircle, WhatsApp } from "../../icons/icons";;
 import { formatPrice } from "../../utils/NumbersUtil";
 import PropTypes from "prop-types";
 

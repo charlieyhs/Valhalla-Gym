@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { ORANGE_COLOR } from "../../constants/colors";
-import { CreditCard, Group, LocalFireDepartment, Savings, Schedule, Security } from "@mui/icons-material";
+import { CreditCard, Group, LocalFireDepartment, Savings, Schedule, Security } from "../../icons/icons";;
 
 const BenefitsPlans = () => {
     return (

@@ -40,7 +40,7 @@ import { CalendarMonth,
     TrendingUp, 
     VideoCall, 
     WhatsApp } 
-from "@mui/icons-material";
+from "../../icons/icons";;
 
 const CoachCard = ({entrenador}) => {
 
@@ -151,6 +151,11 @@ const CoachCard = ({entrenador}) => {
                                 border: `4px solid ${ORANGE_COLOR}40`,
                                 transition: 'transform 0.3s ease',
                                 boxShadow: `0 8px 24px rgba(${ORANGE_COLOR.replace('#', '').match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.3)`
+                            }}
+                            slotProps={{
+                                img: {
+                                    loading: "lazy",
+                                },
                             }}
                         />
                         </Badge>
@@ -370,6 +375,11 @@ const CoachCard = ({entrenador}) => {
                                 src={entrenador.imagen}
                                 alt={entrenador.nombre}
                                 sx={{ width: 60, height: 60, border: `2px solid ${ORANGE_COLOR}` }}
+                                slotProps={{
+                                    img: {
+                                        loading: "lazy",
+                                    },
+                                }}
                                 />
                             <Box>
                                 <Typography variant="h5" sx={{ color: ORANGE_COLOR, fontWeight: 'bold' }}>
@@ -521,6 +531,11 @@ const CoachCard = ({entrenador}) => {
                                 mx: 'auto', 
                                 mb: 2, 
                                 border: `3px solid ${ORANGE_COLOR}` 
+                            }}
+                            slotProps={{
+                                img: {
+                                    loading: "lazy",
+                                },
                             }}
                         />
                         <Typography variant="h5" sx={{ color: ORANGE_COLOR, fontWeight: 'bold' }}>

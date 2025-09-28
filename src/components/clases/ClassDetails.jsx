@@ -9,7 +9,7 @@ import { CalendarMonth,
     Star, 
     TrendingUp, 
     WhatsApp } 
-from "@mui/icons-material";
+from "../../icons/icons";;
 import { Avatar, 
     Box, 
     Button, 
@@ -145,6 +145,7 @@ const ClassDetails = ({open, selectedClass, onClose}) => {
                                     borderRadius: 2,
                                     border: `1px solid ${ORANGE_COLOR}40`
                                 }}
+                                loading="lazy"
                             />
                         </Grid>
 

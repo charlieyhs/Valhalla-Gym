@@ -1,4 +1,8 @@
-import { CheckCircle, Close, Star, Timeline } from "@mui/icons-material";
+import { default as CheckCircle} from '@mui/icons-material/CheckCircle';
+import { default as Close } from "@mui/icons-material/Close";
+import { default as Star } from "@mui/icons-material/Star";
+import { default as Timeline } from "@mui/icons-material/Timeline";
+
 import { Box, 
     Button, 
     Chip, 

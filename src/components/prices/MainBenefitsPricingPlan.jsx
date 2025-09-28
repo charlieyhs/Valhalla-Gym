@@ -1,4 +1,4 @@
-import { CheckCircle } from "@mui/icons-material";
+import { CheckCircle } from "../../icons/icons";;
 import { Box, Button, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 

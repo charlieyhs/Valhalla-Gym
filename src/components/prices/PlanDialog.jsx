@@ -16,7 +16,7 @@ import {
   Chip,
   Button,
 } from "@mui/material";
-import { Close, Security, LocalOffer, CardMembership, WhatsApp, CheckCircle } from "@mui/icons-material";
+import { Close, Security, LocalOffer, CardMembership, WhatsApp, CheckCircle } from "../../icons/icons";;
 import { Zoom } from "@mui/material";
 import { formatPrice } from "../../utils/NumbersUtil";
 import PropTypes from "prop-types";

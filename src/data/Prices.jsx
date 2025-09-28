@@ -5,7 +5,7 @@ import { BusinessCenter,
   School, 
   SportsGymnastics, 
   WorkspacePremium } 
-from "@mui/icons-material"
+from "../icons/icons";
 import { ORANGE_COLOR } from "../constants/colors";
 
 
@@ -339,7 +339,7 @@ export const testimonios = [
     plan: "Premium",
     rating: 5,
     comentario: "Excelente relación calidad-precio. Las clases grupales son increíbles.",
-    avatar: "/src/assets/testimonios/maria.jpg",
+    avatar: "/src/assets/testimonios/maria.webp",
     tiempo: "6 meses"
   },
   {
@@ -348,7 +348,7 @@ export const testimonios = [
     plan: "VIP",
     rating: 5,
     comentario: "La atención personalizada vale cada peso. Resultados garantizados.",
-    avatar: "/src/assets/testimonios/carlos.jpg",
+    avatar: "/src/assets/testimonios/carlos.webp",
     tiempo: "1 año"
   },
   {
@@ -357,7 +357,7 @@ export const testimonios = [
     plan: "Básico",
     rating: 4,
     comentario: "Perfecto para empezar. Instalaciones limpias y buen ambiente.",
-    avatar: "/src/assets/testimonios/ana.jpg",
+    avatar: "/src/assets/testimonios/ana.webp",
     tiempo: "3 meses"
   }
 ];

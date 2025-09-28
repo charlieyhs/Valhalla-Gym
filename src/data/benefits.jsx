@@ -1,19 +1,21 @@
-import { Accessibility, 
-    AcUnit, 
-    ChildFriendly, 
-    DirectionsCar, 
-    EmojiEvents, 
-    Favorite, 
-    FitnessCenter, 
-    Groups, 
-    Pool, 
-    Psychology, 
-    Restaurant, 
-    Security, 
-    Spa, 
-    Wifi } 
-from "@mui/icons-material";
+import React from "react";
 import { ORANGE_COLOR } from "../constants/colors";
+
+const Accessibility = React.lazy(() => import('@mui/icons-material/Accessibility'));
+const AcUnit = React.lazy(() => import('@mui/icons-material/AcUnit'));
+const ChildFriendly = React.lazy(() => import('@mui/icons-material/ChildFriendly'));
+const DirectionsCar = React.lazy(() => import('@mui/icons-material/DirectionsCar'));
+const EmojiEvents = React.lazy(() => import('@mui/icons-material/EmojiEvents'));
+const Favorite = React.lazy(() => import('@mui/icons-material/Favorite'));
+const FitnessCenter = React.lazy(() => import('@mui/icons-material/FitnessCenter'));
+const Groups = React.lazy(() => import('@mui/icons-material/Groups'));
+const Pool = React.lazy(() => import('@mui/icons-material/Pool'));
+const Psychology = React.lazy(() => import('@mui/icons-material/Psychology'));
+const Restaurant = React.lazy(() => import('@mui/icons-material/Restaurant'));
+const Security = React.lazy(() => import('@mui/icons-material/Security'));
+const Spa = React.lazy(() => import('@mui/icons-material/Spa'));
+const Wifi = React.lazy(() => import('@mui/icons-material/Wifi'));
+
 
 export const benefits = [
     {

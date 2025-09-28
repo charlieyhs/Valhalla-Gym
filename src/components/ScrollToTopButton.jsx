@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { ORANGE_COLOR } from "../constants/colors";
 import { IconButton } from "@mui/material";
-import { KeyboardDoubleArrowUp } from "@mui/icons-material";
+import { KeyboardDoubleArrowUp } from "../icons/icons";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
