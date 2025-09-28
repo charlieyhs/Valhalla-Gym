@@ -1,12 +1,13 @@
-import Benefits from "./components/Benefits";
-import Clases from "./components/Clases"
-import Coaches from "./components/Coaches";
-import Locations from "./components/Locations";
-import Navbar from "./components/Navbar"
-import Prices from "./components/Prices";
-import Hero from "./components/Hero";
+import Benefits from "./components/sections/Benefits";
+import Clases from "./components/sections/Clases";
+import Coaches from "./components/sections/Coaches";
+import Contact from "./components/sections/Contact";
+import Locations from "./components/sections/Locations";
+import Prices from "./components/sections/Prices";
+import Hero from "./components/sections/Hero";
+import Navbar from "./components/sections/Navbar";
 import { BLACK_COLOR } from "./constants/colors";
-import Contact from "./components/Contact";
+import { AlertProvider } from "./providers/AlertProvider";
 
 
 const App = () => {
@@ -22,9 +23,11 @@ const App = () => {
   };
 
   return (
-    <div style={{background: BLACK_COLOR}}>
-      <Navbar sectionComponents={sectionComponents} />
-    </div>
+    <AlertProvider>
+      <div style={{background: BLACK_COLOR}}>
+        <Navbar sectionComponents={sectionComponents} />
+      </div>
+    </AlertProvider>
   );
 };
 

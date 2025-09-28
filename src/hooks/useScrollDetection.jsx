@@ -1,59 +1,83 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const SCROLL_OFFSET = 100;
-
-const useScrollDetection = (refs) => {
+const useScrollDetection = (sectionRefs, options = {}) => {
+    const { 
+        threshold = 0.1, 
+        scrollDelay = 0
+    } = options;
+    
     const [activeSection, setActiveSection] = useState(0);
+    const tickingRef = useRef(false);
+    const timeoutRef = useRef();
+
+    const updateActiveSection = useCallback(() => {
+        if (!sectionRefs.current?.length) return;
+
+        let currentActive = 0;
+        let maxVisibility = 0;
+
+        // Usar for loop en lugar de forEach por mejor performance
+        for (let index = 0; index < sectionRefs.current.length; index++) {
+            const ref = sectionRefs.current[index];
+            if (!ref?.current) continue;
+
+            const rect = ref.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Cálculo optimizado de visibilidad
+            const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+            if (visibleHeight <= 0) continue;
+
+            const sectionHeight = rect.height;
+            const visibilityRatio = visibleHeight / Math.min(sectionHeight, windowHeight);
+
+            if (visibilityRatio > maxVisibility) {
+                maxVisibility = visibilityRatio;
+                currentActive = index;
+                
+                // Si encontramos una sección que supera el threshold, salir early
+                if (visibilityRatio > threshold) {
+                    break;
+                }
+            }
+        }
+
+        setActiveSection(prev => prev !== currentActive ? currentActive : prev);
+        tickingRef.current = false;
+    }, [sectionRefs, threshold]);
 
     const handleScroll = useCallback(() => {
-    const scrollPosition = window.scrollY + SCROLL_OFFSET;
+        if (tickingRef.current) return;
 
-    const sections = refs.current
-        .map((ref, index) => {
-            if (ref?.current) {
-                const element = ref.current;
-                return {
-                    index,
-                    top: element.offsetTop,
-                    bottom: element.offsetTop + element.offsetHeight,
-                };
-            }
-            return null;
-        })
-        .filter(Boolean);
+        // Agrupar eventos rápidos de scroll
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
 
-    const currentSection = sections.find(section => 
-        scrollPosition >= section.top && scrollPosition < section.bottom
-    );
-
-    if (currentSection && currentSection.index !== activeSection) {
-        setActiveSection(currentSection.index);
-    }
-    }, [refs, activeSection]);
+        timeoutRef.current = setTimeout(() => {
+            tickingRef.current = true;
+            requestAnimationFrame(updateActiveSection);
+        }, scrollDelay);
+    }, [updateActiveSection, scrollDelay]);
 
     useEffect(() => {
-    // Throttle scroll events para mejor rendimiento
-    let timeoutId = null;
-    const throttledHandleScroll = () => {
-        if (timeoutId === null) {
-        timeoutId = setTimeout(() => {
-            handleScroll();
-            timeoutId = null;
-        }, 10);
-        }
-    };
+        const passiveOptions = { passive: true };
+        
+        window.addEventListener('scroll', handleScroll, passiveOptions);
+        window.addEventListener('resize', handleScroll, passiveOptions);
+        
+        // Detección inicial con pequeño delay para asegurar que el DOM está listo
+        const initTimer = setTimeout(updateActiveSection, 100);
 
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    handleScroll(); // Llamada inicial
-
-    return () => {
-        window.removeEventListener('scroll', throttledHandleScroll);
-        if (timeoutId) {
-        clearTimeout(timeoutId);
-        }
-    };
-    }, [handleScroll]);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            clearTimeout(initTimer);
+        };
+    }, [handleScroll, updateActiveSection]);
 
     return activeSection;
 };
+
 export default useScrollDetection;
