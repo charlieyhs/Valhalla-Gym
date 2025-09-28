@@ -13,11 +13,11 @@ const OpeningHours = () => {
                     
                     <Box sx={{ space: 2 }}>
                         {[
-                            { day: 'Lunes - Viernes', time: '5:00 AM - 11:00 PM' },
-                            { day: 'Sábados', time: '6:00 AM - 10:00 PM' },
-                            { day: 'Domingos y Festivos', time: '7:00 AM - 9:00 PM' }
-                        ].map((schedule, index) => (
-                            <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, p: 2, backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 2 }}>
+                            {id:'1', day: 'Lunes - Viernes', time: '5:00 AM - 11:00 PM' },
+                            {id:'2', day: 'Sábados', time: '6:00 AM - 10:00 PM' },
+                            {id:'3', day: 'Domingos y Festivos', time: '7:00 AM - 9:00 PM' }
+                        ].map((schedule) => (
+                            <Box key={schedule.id} sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, p: 2, backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 2 }}>
                             <Typography variant="body1" sx={{ color: '#fff', fontWeight: 'bold' }}>
                                 {schedule.day}
                             </Typography>

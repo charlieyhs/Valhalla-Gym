@@ -20,6 +20,8 @@ const TeamMemberCard = ({ member, index }) => (
         }}
         >
         <Avatar
+            src={member.avatar}
+            alt={member.name}
             sx={{ 
                 width: 80, 
                 height: 80, 
@@ -28,9 +30,7 @@ const TeamMemberCard = ({ member, index }) => (
                 bgcolor: ORANGE_COLOR,
                 fontSize: '2rem'
             }}
-        >
-            {member.name.split(' ').map(n => n[0]).join('')}
-        </Avatar>
+        />
         
         <Typography variant="h6" sx={{ color: ORANGE_COLOR, fontWeight: 'bold', mb: 0.5 }}>
             {member.name}

@@ -15,9 +15,9 @@ import {
   ListItemText,
   Chip,
   Button,
+  Zoom,
 } from "@mui/material";
 import { Close, Security, LocalOffer, CardMembership, WhatsApp, CheckCircle } from "../../icons/icons";;
-import { Zoom } from "@mui/material";
 import { formatPrice } from "../../utils/NumbersUtil";
 import PropTypes from "prop-types";
 

@@ -65,7 +65,7 @@ export const teamMembers = [
     role: "Gerente General",
     phone: "+57 123 456 7890",
     email: "carlos@valhallagym.com",
-    avatar: "/src/assets/team/carlos.jpg",
+    avatar: "/src/assets/testimonios/carlos.webp",
     specialty: "Fitness & Nutrición"
   },
   {
@@ -74,16 +74,16 @@ export const teamMembers = [
     role: "Coordinadora de Membresías",
     phone: "+57 123 456 7890",
     email: "ana@valhallagym.com",
-    avatar: "/src/assets/team/ana.jpg",
+    avatar: "/src/assets/testimonios/ana.webp",
     specialty: "Atención al Cliente"
   },
   {
     id: '1:3',
-    name: "David López",
+    name: "Maria López",
     role: "Entrenador Principal",
     phone: "+57 123 456 7890",
-    email: "david@valhallagym.com",
-    avatar: "/src/assets/team/david.jpg",
+    email: "maria@valhallagym.com",
+    avatar: "/src/assets/testimonios/maria.webp",
     specialty: "Entrenamiento Personalizado"
   }
 ];
