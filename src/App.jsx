@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Benefits from "./components/sections/Benefits";
+import Clases from "./components/sections/Clases";
+import Coaches from "./components/sections/Coaches";
+import Contact from "./components/sections/Contact";
+import Locations from "./components/sections/Locations";
+import Prices from "./components/sections/Prices";
+import Hero from "./components/sections/Hero";
+import Navbar from "./components/sections/Navbar";
+import { BLACK_COLOR } from "./constants/colors";
+import { AlertProvider } from "./providers/AlertProvider";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const App = () => {
+  
+  const sectionComponents = {
+    'hero': Hero, 
+    'clases': Clases,
+    'entrenadores': Coaches,
+    'ubicaciones': Locations,
+    'precios': Prices,
+    'beneficios' : Benefits,
+    'contactos' : Contact,
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <AlertProvider>
+      <div style={{background: BLACK_COLOR}}>
+        <Navbar sectionComponents={sectionComponents} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </AlertProvider>
+  );
+};
 
 export default App

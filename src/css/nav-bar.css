@@ -1,0 +1,139 @@
+:root {
+    --color-naranja: #ff4d30;
+    --color-negro: #020024;
+    --color-bg: rgba(10, 10, 10, 0.95);
+}
+
+.navbar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background: transparent !important;
+  min-height: 80px !important;
+}
+
+.nav-item {    
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+    text-transform: capitalize !important;
+    border-radius: 12px;
+    padding: 8px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+.nav-item:hover {
+    color: var(--color-naranja) !important;
+    transform: translateY(-1px);
+    border-color: var(--color-naranja)30;
+    background: rgba(255, 77, 48, 0.05);
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-naranja), #ff6b35);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::before {
+  width: 70%;
+}
+
+.nav-item.active {
+    color: white !important;
+    background: linear-gradient(135deg, var(--color-naranja), #ff6b35);
+    box-shadow: 0 4px 20px rgba(255, 77, 48, 0.4);
+    transform: scale(1.05);
+    border: none;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0) 50%
+    );
+    animation: shine 1.5s ease-in-out infinite;
+    transform: rotate(30deg);
+}
+
+.nav-item.featured {
+    font-weight: 700;
+}
+
+.nav-item.featured::after {
+    content: "✨";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-item.featured:hover::after {
+    opacity: 1;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(30deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(30deg);
+    }
+}
+
+/* Efecto glassmorphism para el navbar scroll */
+.scrolled-navbar {
+    background: rgba(10, 10, 10, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-naranja)20;
+    box-shadow: 0 8px 32px rgba(255, 77, 48, 0.15) !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .navbar-toolbar {
+        padding: 0.5rem 1rem;
+        min-height: 70px !important;
+    }
+    
+    .nav-item {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animación de entrada para items del menú */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-item-entering {
+    animation: slideInFromTop 0.5s ease forwards;
+}
