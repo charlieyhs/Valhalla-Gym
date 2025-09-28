@@ -1,3 +1,8 @@
+import {
+  testimonioMariaImg,
+  testimonioAnaImg,
+  testimonioCarlosImg
+} from '../assets/images';
 import { BusinessCenter, 
   Elderly, 
   FamilyRestroom, 
@@ -339,7 +344,7 @@ export const testimonios = [
     plan: "Premium",
     rating: 5,
     comentario: "Excelente relación calidad-precio. Las clases grupales son increíbles.",
-    avatar: "/src/assets/testimonios/maria.webp",
+    avatar: testimonioMariaImg,
     tiempo: "6 meses"
   },
   {
@@ -348,7 +353,7 @@ export const testimonios = [
     plan: "VIP",
     rating: 5,
     comentario: "La atención personalizada vale cada peso. Resultados garantizados.",
-    avatar: "/src/assets/testimonios/carlos.webp",
+    avatar: testimonioCarlosImg,
     tiempo: "1 año"
   },
   {
@@ -357,7 +362,7 @@ export const testimonios = [
     plan: "Básico",
     rating: 4,
     comentario: "Perfecto para empezar. Instalaciones limpias y buen ambiente.",
-    avatar: "/src/assets/testimonios/ana.webp",
+    avatar: testimonioAnaImg,
     tiempo: "3 meses"
   }
 ];

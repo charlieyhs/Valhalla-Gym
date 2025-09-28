@@ -1,4 +1,9 @@
 import { Email, Facebook, Instagram, Phone, WhatsApp } from "../icons/icons";;
+import {testimonioMariaImg,
+  testimonioAnaImg,
+  testimonioCarlosImg
+} from '../assets/images';
+
 
 export const contacts = [
   { 
@@ -65,7 +70,7 @@ export const teamMembers = [
     role: "Gerente General",
     phone: "+57 123 456 7890",
     email: "carlos@valhallagym.com",
-    avatar: "/src/assets/testimonios/carlos.webp",
+    avatar: testimonioCarlosImg,
     specialty: "Fitness & Nutrición"
   },
   {
@@ -74,7 +79,7 @@ export const teamMembers = [
     role: "Coordinadora de Membresías",
     phone: "+57 123 456 7890",
     email: "ana@valhallagym.com",
-    avatar: "/src/assets/testimonios/ana.webp",
+    avatar: testimonioAnaImg,
     specialty: "Atención al Cliente"
   },
   {
@@ -83,7 +88,7 @@ export const teamMembers = [
     role: "Entrenador Principal",
     phone: "+57 123 456 7890",
     email: "maria@valhallagym.com",
-    avatar: "/src/assets/testimonios/maria.webp",
+    avatar: testimonioMariaImg,
     specialty: "Entrenamiento Personalizado"
   }
 ];

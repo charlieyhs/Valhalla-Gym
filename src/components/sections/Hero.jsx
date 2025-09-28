@@ -1,3 +1,4 @@
+import { gym3d } from '../../assets/images';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import '../../css/hero.css'
 import { ORANGE_COLOR } from '../../constants/colors';
@@ -33,7 +34,7 @@ export default function Hero() {
             <Grid size={{xs:12, md:6}} sx={{ textAlign: "center" }}>
                 <div className="hero-illustration">
                     <img
-                        src="/src/assets/gym-3d.webp"
+                        src={gym3d}
                         alt="3D Gym Illustration"
                         style={{ width: "100%", maxWidth: '70%'}}
                         loading="lazy"
